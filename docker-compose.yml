@@ -1,0 +1,10 @@
+services:
+  laravel:
+    container_name: notes
+    image: laravelsail/php84-composer:latest
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8000:8000"
+    command: php artisan serve --host=0.0.0.0 --port=8000
