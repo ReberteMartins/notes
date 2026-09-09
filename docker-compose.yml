@@ -1,7 +1,9 @@
 services:
   laravel:
     container_name: notes
-    image: laravelsail/php84-composer:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     working_dir: /var/www/html
     volumes:
       - .:/var/www/html
@@ -10,6 +12,7 @@ services:
     command: php artisan serve --host=0.0.0.0 --port=8000
     depends_on:
       - postgres
+
   postgres:
     image: postgres:18-alpine
     container_name: postgres
