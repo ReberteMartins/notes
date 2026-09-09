@@ -15,10 +15,16 @@ class AuthController extends Controller
     public function loginSubmit(Request $request)
     {
         // form validation
-        $request->validate([
-            'text_username' => 'required|email',
-            'text_password' => 'required|min:6',
-        ]);
+        $request->validate(
+            [
+                'text_username' => 'required|email',
+                'text_password' => 'required|min:6',
+            ],
+            [
+                'required' => 'O campo :attribute é obrigatório.',
+                'email' => 'O campo :attribute deve ser um email válido.',
+                'min' => 'O campo :attribute deve ter no mínimo :min caracteres.',
+            ]);
 
         $username = $request->input('text_username');
         $password = $request->input('text_password');
