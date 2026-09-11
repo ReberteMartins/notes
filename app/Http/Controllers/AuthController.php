@@ -50,9 +50,9 @@ class AuthController extends Controller
         $user->last_login = date('Y-m-d H:i:s');
         $user->save();
 
-        session(['user_id' => base64_encode($user->id), 'username' => $user->username]);
+        session(['user_id' => $user->id, 'username' => $user->username]);
 
-        echo "Login successful";
+        return redirect()->to('/');
     }   
 
     public function logout()
