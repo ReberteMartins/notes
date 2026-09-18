@@ -12,7 +12,8 @@ class Operations
         try {
             $value = decrypt($value);
         } catch (DecryptException $e) {
-            return redirect()->route('home');
+            return null;
+            // return redirect()->route('home');
         }
 
         return $value;
